@@ -47,6 +47,7 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 bindkey -M viins 'jj' vi-cmd-mode
 export GIT_SSH_COMMAND='ssh -i /workspace/mykey'
+export HF_HOME=/data/huggingface
 EOF
 
 cat > ~/.tmux.conf << 'EOF'
@@ -94,4 +95,6 @@ EOF
 chsh -s $(which zsh)
 
 # For tiger
+cp ~/.zshrc /home/tiger/
+cp ~/.tmux.conf /home/tiger/
 chsh -s $(which zsh) tiger
