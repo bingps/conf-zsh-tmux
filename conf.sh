@@ -1,4 +1,4 @@
-apt update && apt install -y zsh tmux
+sudo apt update && sudo apt install -y zsh tmux
 cat > ~/.zshrc << 'EOF'
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
