@@ -31,7 +31,12 @@ if [ -d ~/.zsh/zsh-autosuggestions ]; then
 else
   git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 fi
-# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [ -d ~/.zsh/zsh-syntax-highlighting ]; then
+  source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+fi
 
 if [ -d ~/powerlevel10k ]; then
   source ~/powerlevel10k/powerlevel10k.zsh-theme
