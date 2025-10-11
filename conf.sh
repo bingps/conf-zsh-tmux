@@ -99,7 +99,3 @@ EOF
 
 chsh -s $(which zsh)
 
-# For tiger
-cp ~/.zshrc /home/tiger/
-cp ~/.tmux.conf /home/tiger/
-chsh -s $(which zsh) tiger
