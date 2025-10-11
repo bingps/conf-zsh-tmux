@@ -1,4 +1,4 @@
-apt update && apt install zsh tmux
+apt update && apt install -y zsh tmux
 cat > ~/.zshrc << 'EOF'
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -51,6 +51,8 @@ alias ll='ls -l --color=auto'
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 bindkey -M viins 'jj' vi-cmd-mode
+export GIT_SSH_COMMAND='ssh -i /workspace/mykey'
+export HF_HOME=/data/huggingface
 EOF
 
 cat > ~/.tmux.conf << 'EOF'
@@ -96,3 +98,8 @@ bind-key c new-window -a
 EOF
 
 chsh -s $(which zsh)
+
+# For tiger
+cp ~/.zshrc /home/tiger/
+cp ~/.tmux.conf /home/tiger/
+chsh -s $(which zsh) tiger
