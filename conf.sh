@@ -1,4 +1,5 @@
 sudo apt update && sudo apt install -y zsh tmux
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3
 cat > ~/.zshrc << 'EOF'
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -53,6 +54,8 @@ bindkey '^R' history-incremental-search-backward
 bindkey -M viins 'jj' vi-cmd-mode
 export GIT_SSH_COMMAND='ssh -i /workspace/mykey'
 export HF_HOME=/data/huggingface
+
+set -o vi
 EOF
 
 cat > ~/.tmux.conf << 'EOF'
