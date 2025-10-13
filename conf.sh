@@ -1,6 +1,6 @@
 sudo apt update && sudo apt install -y zsh tmux
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3
-cat > ~/.zshrc << 'EOF'
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+cat >> ~/.zshrc << 'EOF'
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -27,22 +27,24 @@ zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-if [ -d ~/.zsh/zsh-autosuggestions ]; then
-  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-else
-  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-fi
+if [ -z "${ZSH}" ]; then
+  if [ -d ~/.zsh/zsh-autosuggestions ]; then
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+  else
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+  fi
 
-if [ -d ~/.zsh/zsh-syntax-highlighting ]; then
-  source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-else
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-fi
+  if [ -d ~/.zsh/zsh-syntax-highlighting ]; then
+    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  else
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+  fi
 
-if [ -d ~/powerlevel10k ]; then
-  source ~/powerlevel10k/powerlevel10k.zsh-theme
-else
-  git clone https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+  if [ -d ~/powerlevel10k ]; then
+    source ~/powerlevel10k/powerlevel10k.zsh-theme
+  else
+    git clone https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+  fi
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -98,7 +100,10 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 
 bind-key c new-window -a
+set-option -g default-shell /bin/zsh
 EOF
+
+echo "set editing-mode vi" >> ~/.inputrc
 
 chsh -s $(which zsh)
 
