@@ -1,5 +1,5 @@
-sudo apt update && sudo apt install -y zsh tmux
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+apt update && apt install -y zsh tmux
+update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 cat >> ~/.zshrc << 'EOF'
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -17,8 +17,13 @@ bindkey -M emacs '5~' kill-word
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_ALL_DUPS
+# setopt HIST_FIND_NO_DUPS
+# setopt NO_INC_APPEND_HISTORY
+unsetopt SHARE_HISTORY
+unsetopt INC_APPEND_HISTORY
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -106,4 +111,7 @@ EOF
 echo "set editing-mode vi" >> ~/.inputrc
 
 chsh -s $(which zsh)
+
+git config --global user.name "Guangda Liu"
+git config --global user.email "bingps@users.noreply.github.com"
 
