@@ -36,19 +36,19 @@ if [ -z "${ZSH}" ]; then
   if [ -d ~/.zsh/zsh-autosuggestions ]; then
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
   else
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions || git clone git@github.com:zsh-users/zsh-autosuggestions.git ~/.zsh/zsh-autosuggestions
   fi
 
   if [ -d ~/.zsh/zsh-syntax-highlighting ]; then
     source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   else
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting || git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
   fi
 
   if [ -d ~/powerlevel10k ]; then
     source ~/powerlevel10k/powerlevel10k.zsh-theme
   else
-    git clone https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+    git clone https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k || git clone git@github.com:romkatv/powerlevel10k.git ~/powerlevel10k
   fi
 fi
 
