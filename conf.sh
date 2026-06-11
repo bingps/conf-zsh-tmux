@@ -96,6 +96,8 @@ set -g mouse on
 setw -g mode-keys vi
 
 set -g default-terminal "screen-256color"
+set -g default-terminal "tmux-256color"
+set -ga terminal-overrides ",*256col*:Tc"
 
 
 set -g @plugin 'tmux-plugins/tpm'
