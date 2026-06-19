@@ -1,5 +1,15 @@
 apt update && apt install -y zsh tmux
 update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/config <<'EOF'
+
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+  User git
+EOF
+chmod 600 ~/.ssh/config
+
 cat >> ~/.zshrc << 'EOF'
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -100,6 +110,7 @@ set -g default-terminal "tmux-256color"
 set -ga terminal-overrides ",*256col*:Tc"
 
 set -g status-right ''
+set -g focus-events on
 
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
@@ -117,4 +128,6 @@ chsh -s $(which zsh)
 
 git config --global user.name "Guangda Liu"
 git config --global user.email "bingps@users.noreply.github.com"
+git config --global credential.helper store
 
+export CLAUDE_CONFIG_DIR="/cpfs02/user/lgd/.claude/"
