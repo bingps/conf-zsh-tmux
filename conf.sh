@@ -39,6 +39,8 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
 
+export GIT_SSH_COMMAND='ssh -i /cpfs02/user/lgd/.ssh/id_ed25519'
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -69,8 +71,9 @@ alias ll='ls -l --color=auto'
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 bindkey -M viins 'jj' vi-cmd-mode
-export GIT_SSH_COMMAND='ssh -i /workspace/mykey'
 export HF_HOME=/data/huggingface
+
+export CLAUDE_CONFIG_DIR="/cpfs02/user/lgd/.claude/"
 
 set -o vi
 EOF
@@ -130,4 +133,3 @@ git config --global user.name "Guangda Liu"
 git config --global user.email "bingps@users.noreply.github.com"
 git config --global credential.helper store
 
-export CLAUDE_CONFIG_DIR="/cpfs02/user/lgd/.claude/"
